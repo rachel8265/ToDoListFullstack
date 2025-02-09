@@ -2,24 +2,17 @@ import axios from 'axios';
 
 axios.defaults.baseURL = process.env.REACT_APP_API_URL
 
-axios.interceptors.request.use(function (config) {
-  const token = 'your-auth-token';
-  console.log('Request Config:', config);
-  return config;
-}, function (error) {
-  
-  console.error('Request Error:', error);
-  return Promise.reject(error);
-});
-
-
-axios.interceptors.response.use(function (response) {
-  console.log('Response Data:', response.data);
-  return response;
-}, function (error) {
-  console.error('Response Error:', error.response ? error.response.data : error.message);
-  return Promise.reject(error);
-});
+axios.interceptors.response.use(
+  response => response, 
+  error => {
+    console.error('API Error:', {
+      message: error.message,
+      status: error.response?.status,
+      data: error.response?.data
+    });
+    return Promise.reject(error); 
+  }
+);
 
 
 export default {
