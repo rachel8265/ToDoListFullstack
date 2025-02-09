@@ -30,15 +30,15 @@ var app = builder.Build();
 
 
 
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+// {
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "My Minimal API V1");
         c.RoutePrefix = string.Empty; 
     });
-}
+//}
 
 app.MapGet("/items", async (ToDoDbContext dbContext) =>
 {
