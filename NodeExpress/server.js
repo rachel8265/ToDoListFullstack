@@ -6,13 +6,12 @@ const PORT = process.env.PORT || 3000;
 
 const RENDER_API_KEY = 'rnd_YLTaQHmSyLqBkVhvr6uh66N5cI58';
 
-// Endpoint GET שמחזיר את רשימת האפליקציות
 app.get('/apps', async (req, res) => {
     try {
         const response = await axios.get('https://api.render.com/v1/services', {
             headers: {
                 'Authorization': `Bearer ${RENDER_API_KEY}`,
-                'Content-Type': 'application/json'//
+                'Content-Type': 'application/json'
             }
         });
         res.json(response.data); 
