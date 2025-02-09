@@ -4,7 +4,6 @@ const axios = require('axios');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// API Key שלך
 const RENDER_API_KEY = 'rnd_YLTaQHmSyLqBkVhvr6uh66N5cI58';
 
 // Endpoint GET שמחזיר את רשימת האפליקציות
@@ -16,7 +15,7 @@ app.get('/apps', async (req, res) => {
                 'Content-Type': 'application/json'//
             }
         });
-        res.json(response.data); // מחזיר את הנתונים ב-JSON
+        res.json(response.data); 
     } catch (error) {
         console.error('Error fetching apps:', error);
         res.status(500).json({ error: 'Failed to fetch apps' });
